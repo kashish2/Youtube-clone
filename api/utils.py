@@ -4,15 +4,17 @@ from datetime import datetime, timedelta
 
 # Google API
 from apiclient.discovery import build
+from youtube_fetch_api import settings
  
 logger = logging.getLogger("application")
 
 
 def fetch_videos():
-    last_request_time = datetime.now() - timedelta(weeks=62)   
+    last_request_time = datetime.now() - timedelta(weeks=62)
+
 
     try:
-        youtube = build('youtube', 'v3', developerKey='AIzaSyBXJTKThST3TEgcHZLxO1qoMejvw-X6CZk')
+        youtube = build('youtube', 'v3', developerKey=settings.GOOGLE_API_KEYS[0])
         request = youtube.search().list(
             q="trending", 
             part="snippet", 
