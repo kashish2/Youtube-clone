@@ -21,6 +21,6 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.YoutubeItems.as_view()),
-    path('api/', include('api.urls'))
+    path('api/', views.YoutubeItems.as_view()),
+    path('', include('api.urls'))
 ]
